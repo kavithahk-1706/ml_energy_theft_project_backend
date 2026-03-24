@@ -7,3 +7,4 @@ seaborn
 joblib
 python-multipart
 xgboost
+sqlalchemy
