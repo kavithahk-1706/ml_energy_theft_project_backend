@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, Float, DateTime, JSON
+from sqlalchemy import Column, String, Integer, Float, DateTime, JSON, Boolean
 from database import Base
 import datetime
 
@@ -6,14 +6,14 @@ class PredictionRecord(Base):
     __tablename__ = "predictions"
 
     id = Column(String, primary_key=True, index=True)
-    tenant_slug = Column(String, index=True)  # Links the scan to a specific client
-    prediction_name = Column(String)          # e.g., "Sector 7 Audit"
-    timestamp = Column(DateTime, default=datetime.datetime.utcnow)
-    mode = Column(String)                     # "SINGLE" or "BATCH"
-    meters_scanned = Column(Integer)
-    flags_detected = Column(Integer)
-    accuracy_score = Column(String)           # e.g., "99.61%"
-    execution_time = Column(String)           # e.g., "1.42s"
-    
-    # We store the actual flagged anomalies as JSON so the snapshot page can render the table
-    anomalies = Column(JSON)
+    tenant_slug = Column(String, index=True)
+    prediction_name = Column(String)
+    timestamp = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
+    mode = Column(String)                    # "SINGLE" or "BATCH"
+    records_analyzed = Column(Integer)       # how many rows were classified
+    theft_detected = Column(Integer)         # how many came back as Theft
+    accuracy_score = Column(String)          # "99.61%"
+    execution_time = Column(String)          # "1.42s"
+    has_full_records = Column(Boolean)       # False if batch exceeded threshold
+    theft_predictions = Column(JSON)         # rows classified as Theft
+    all_predictions = Column(JSON)           # ALL rows, only saved if under threshold
