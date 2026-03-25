@@ -117,7 +117,9 @@ def predict_single(
                 "prediction": result["prediction"],
                 "prediction_label": result["prediction_label"],
                 "confidence": result["confidence"],
-                "probabilities": result["probabilities"]
+                "probabilities": result["probabilities"],
+                "tree_votes": result.get("tree_votes"),
+                "anomaly_flags": result.get("anomaly_flags", [])
             })
 
         db_record = db_models.PredictionRecord(
@@ -138,7 +140,9 @@ def predict_single(
                 "prediction": result["prediction"],
                 "prediction_label": result["prediction_label"],
                 "confidence": result["confidence"],
-                "probabilities": result["probabilities"]
+                "probabilities": result["probabilities"],
+                "tree_votes": result.get("tree_votes"),
+                "anomaly_flags": result.get("anomaly_flags", [])
             }]
         )
         db.add(db_record)
@@ -219,10 +223,7 @@ async def predict_batch(
                 "record_index": i,
                 "area_id": area_ids[i],
                 "features": records[i],
-                "prediction": res["prediction"],
-                "prediction_label": res["prediction_label"],
-                "confidence": res["confidence"],
-                "probabilities": res["probabilities"]
+                **res
             }
 
             if res["prediction"] == 1:

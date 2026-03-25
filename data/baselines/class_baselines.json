@@ -1,0 +1,386 @@
+{
+  "FullServiceRestaurant": {
+    "mean": {
+      "fans_electricity": 2.6730596437002174,
+      "cooling_electricity": 2.4868172660162786,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 6.010822175673128,
+      "interior_equipment_electricity": 15.105649926838955,
+      "gas_facility": 43.09699821956878,
+      "heating_gas": 16.25021080882877,
+      "interior_equipment_gas": 20.273751950294873,
+      "water_heater_gas": 6.573035460486362
+    },
+    "std": {
+      "fans_electricity": 1.6633775957998722,
+      "cooling_electricity": 5.277008903488932,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 3.4779796264563463,
+      "interior_equipment_electricity": 8.643275308454058,
+      "gas_facility": 38.37125557183294,
+      "heating_gas": 28.69131376734315,
+      "interior_equipment_gas": 15.45214114818853,
+      "water_heater_gas": 5.3494755643324385
+    }
+  },
+  "Hospital": {
+    "mean": {
+      "fans_electricity": 78.45953381337748,
+      "cooling_electricity": 322.0258739886006,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 101.96115491283047,
+      "interior_equipment_electricity": 160.17531385448896,
+      "gas_facility": 347.3943370491717,
+      "heating_gas": 295.52193875529804,
+      "interior_equipment_gas": 33.77547924124827,
+      "water_heater_gas": 18.096919051837432
+    },
+    "std": {
+      "fans_electricity": 36.957645382386794,
+      "cooling_electricity": 192.21901377938246,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 82.72204783649745,
+      "interior_equipment_electricity": 97.89416689977757,
+      "gas_facility": 218.5205095069773,
+      "heating_gas": 205.28117954898485,
+      "interior_equipment_gas": 26.435411644393987,
+      "water_heater_gas": 13.108743583673128
+    }
+  },
+  "LargeHotel": {
+    "mean": {
+      "fans_electricity": 27.24057456265361,
+      "cooling_electricity": 70.22145082104126,
+      "heating_electricity": 0.009566395895031856,
+      "interior_lights_electricity": 36.496866037367774,
+      "interior_equipment_electricity": 48.384053132234804,
+      "gas_facility": 254.94402199691854,
+      "heating_gas": 52.822520002450354,
+      "interior_equipment_gas": 30.672220148232203,
+      "water_heater_gas": 171.44928184665915
+    },
+    "std": {
+      "fans_electricity": 12.187782641219162,
+      "cooling_electricity": 43.90066982615322,
+      "heating_electricity": 0.10901609586715061,
+      "interior_lights_electricity": 27.770417271805105,
+      "interior_equipment_electricity": 28.22700597679798,
+      "gas_facility": 202.83936535430828,
+      "heating_gas": 93.7204891404512,
+      "interior_equipment_gas": 28.069172351433114,
+      "water_heater_gas": 129.13702143979341
+    }
+  },
+  "LargeOffice": {
+    "mean": {
+      "fans_electricity": 14.863520740129063,
+      "cooling_electricity": 114.01092122586921,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 141.74160108700653,
+      "interior_equipment_electricity": 209.8855130972788,
+      "gas_facility": 83.3333025810004,
+      "heating_gas": 77.48148864316946,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 5.851813938115167
+    },
+    "std": {
+      "fans_electricity": 15.206512909676801,
+      "cooling_electricity": 164.22795580941394,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 159.7476014971076,
+      "interior_equipment_electricity": 132.16292573151165,
+      "gas_facility": 242.33224199060953,
+      "heating_gas": 240.36191642974813,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 6.466121849829291
+    }
+  },
+  "MediumOffice": {
+    "mean": {
+      "fans_electricity": 1.9794246768530555,
+      "cooling_electricity": 9.865575108686608,
+      "heating_electricity": 9.857138149382578,
+      "interior_lights_electricity": 17.258144127175374,
+      "interior_equipment_electricity": 28.414845663811196,
+      "gas_facility": 6.308684518627174,
+      "heating_gas": 5.2883907656875735,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 1.0202937529421723
+    },
+    "std": {
+      "fans_electricity": 1.8071295502035072,
+      "cooling_electricity": 16.633349671892383,
+      "heating_electricity": 21.91302962283606,
+      "interior_lights_electricity": 17.58900454339466,
+      "interior_equipment_electricity": 20.169199613650264,
+      "gas_facility": 18.289797450606354,
+      "heating_gas": 17.971098645526883,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.8677625162678984
+    }
+  },
+  "MidriseApartment": {
+    "mean": {
+      "fans_electricity": 1.0957959124053784,
+      "cooling_electricity": 3.2508633522583765,
+      "heating_electricity": 0.0002240447064952892,
+      "interior_lights_electricity": 4.373787626902102,
+      "interior_equipment_electricity": 11.238207046846759,
+      "gas_facility": 15.422045279437853,
+      "heating_gas": 8.075438358876552,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 7.3466069205675115
+    },
+    "std": {
+      "fans_electricity": 1.0937438629287213,
+      "cooling_electricity": 5.468003195041239,
+      "heating_electricity": 0.0044067728748191275,
+      "interior_lights_electricity": 3.0482653943495595,
+      "interior_equipment_electricity": 6.246129450840896,
+      "gas_facility": 18.626235191214267,
+      "heating_gas": 15.999804430122051,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 6.03599110537456
+    }
+  },
+  "OutPatient": {
+    "mean": {
+      "fans_electricity": 20.403562742597757,
+      "cooling_electricity": 27.411852027333975,
+      "heating_electricity": 3.392533985386871,
+      "interior_lights_electricity": 14.302502532413849,
+      "interior_equipment_electricity": 45.36726910649972,
+      "gas_facility": 72.61937598357842,
+      "heating_gas": 66.73333420311756,
+      "interior_equipment_gas": 4.7262760537420645,
+      "water_heater_gas": 1.1597657268924084
+    },
+    "std": {
+      "fans_electricity": 9.866815934556199,
+      "cooling_electricity": 25.539260265533734,
+      "heating_electricity": 7.358474208863205,
+      "interior_lights_electricity": 13.40524746929498,
+      "interior_equipment_electricity": 39.0283181822124,
+      "gas_facility": 43.026227774562884,
+      "heating_gas": 40.60188407205012,
+      "interior_equipment_gas": 3.204950096234046,
+      "water_heater_gas": 2.6350173797102947
+    }
+  },
+  "PrimarySchool": {
+    "mean": {
+      "fans_electricity": 3.411999927615468,
+      "cooling_electricity": 10.228515915872384,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 31.505406285813695,
+      "interior_equipment_electricity": 31.221911918557502,
+      "gas_facility": 41.13879181250972,
+      "heating_gas": 30.655900430536974,
+      "interior_equipment_gas": 5.900505866002244,
+      "water_heater_gas": 4.58238551586606
+    },
+    "std": {
+      "fans_electricity": 4.579167322585219,
+      "cooling_electricity": 25.143961704498476,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 28.133521006892813,
+      "interior_equipment_electricity": 20.59576931143253,
+      "gas_facility": 85.5307320596636,
+      "heating_gas": 80.70054381019501,
+      "interior_equipment_gas": 7.678364611216434,
+      "water_heater_gas": 6.461766620933723
+    }
+  },
+  "QuickServiceRestaurant": {
+    "mean": {
+      "fans_electricity": 1.4276362633694772,
+      "cooling_electricity": 0.9715373823049451,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 2.4178509389329244,
+      "interior_equipment_electricity": 10.275537180040457,
+      "gas_facility": 23.557888610843914,
+      "heating_gas": 7.234138061699211,
+      "interior_equipment_gas": 14.18834542972186,
+      "water_heater_gas": 2.135405119418156
+    },
+    "std": {
+      "fans_electricity": 0.9010572097829753,
+      "cooling_electricity": 2.246248309548769,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 1.4216919406382345,
+      "interior_equipment_electricity": 5.989660109048224,
+      "gas_facility": 20.309284315469494,
+      "heating_gas": 14.331334146922197,
+      "interior_equipment_gas": 10.982658978594745,
+      "water_heater_gas": 1.6773368718887012
+    }
+  },
+  "SecondarySchool": {
+    "mean": {
+      "fans_electricity": 27.403251341038825,
+      "cooling_electricity": 104.03206255086519,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 84.2441320243601,
+      "interior_equipment_electricity": 56.30173731973705,
+      "gas_facility": 172.0969999350127,
+      "heating_gas": 152.0619538851237,
+      "interior_equipment_gas": 8.707283541633002,
+      "water_heater_gas": 11.327762508801307
+    },
+    "std": {
+      "fans_electricity": 32.69565548111123,
+      "cooling_electricity": 199.41119610353135,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 76.66623237019029,
+      "interior_equipment_electricity": 40.05442692333821,
+      "gas_facility": 413.1214565130908,
+      "heating_gas": 400.9546377598888,
+      "interior_equipment_gas": 11.533762825083734,
+      "water_heater_gas": 15.745957290891543
+    }
+  },
+  "SmallHotel": {
+    "mean": {
+      "fans_electricity": 5.061485762475274,
+      "cooling_electricity": 9.233173933342549,
+      "heating_electricity": 0.8207555264243764,
+      "interior_lights_electricity": 16.028034613744133,
+      "interior_equipment_electricity": 20.5831133204386,
+      "gas_facility": 23.62080165023461,
+      "heating_gas": 8.70816664781521,
+      "interior_equipment_gas": 4.770421353434174,
+      "water_heater_gas": 10.142213648962466
+    },
+    "std": {
+      "fans_electricity": 2.289677973208782,
+      "cooling_electricity": 10.233624012905604,
+      "heating_electricity": 2.9736310500590086,
+      "interior_lights_electricity": 9.371522285953757,
+      "interior_equipment_electricity": 13.034710176082703,
+      "gas_facility": 20.9783034723066,
+      "heating_gas": 14.285041109636333,
+      "interior_equipment_gas": 7.173378409676518,
+      "water_heater_gas": 8.720891922716486
+    }
+  },
+  "SmallOffice": {
+    "mean": {
+      "fans_electricity": 0.9707557525389228,
+      "cooling_electricity": 0.5709779098233569,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 1.4656332147971087,
+      "interior_equipment_electricity": 2.146583044093135,
+      "gas_facility": 1.6386521166669998,
+      "heating_gas": 1.3372959284223378,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.3013561882544885
+    },
+    "std": {
+      "fans_electricity": 0.9159534595998362,
+      "cooling_electricity": 1.2997287618119513,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 1.7319181606143164,
+      "interior_equipment_electricity": 1.4755023500609483,
+      "gas_facility": 3.873721477838372,
+      "heating_gas": 3.838798155679458,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.19930356864105014
+    }
+  },
+  "Stand-aloneRetail": {
+    "mean": {
+      "fans_electricity": 7.658707911865314,
+      "cooling_electricity": 4.061570570168132,
+      "heating_electricity": 0.16369143325339564,
+      "interior_lights_electricity": 15.159679598976561,
+      "interior_equipment_electricity": 5.6355441006351965,
+      "gas_facility": 23.574720890557863,
+      "heating_gas": 23.574720890557863,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.0
+    },
+    "std": {
+      "fans_electricity": 5.389126129484659,
+      "cooling_electricity": 8.975660007838703,
+      "heating_electricity": 0.3403139092583397,
+      "interior_lights_electricity": 12.7882046911868,
+      "interior_equipment_electricity": 3.9364042138087396,
+      "gas_facility": 47.03730987878514,
+      "heating_gas": 47.03730987878514,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.0
+    }
+  },
+  "StripMall": {
+    "mean": {
+      "fans_electricity": 5.108176334474388,
+      "cooling_electricity": 3.623716965921975,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 14.1089836823723,
+      "interior_equipment_electricity": 4.157330027498169,
+      "gas_facility": 27.5022076673121,
+      "heating_gas": 27.5022076673121,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.0
+    },
+    "std": {
+      "fans_electricity": 3.6144345094678125,
+      "cooling_electricity": 8.206986792165791,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 12.054651991345963,
+      "interior_equipment_electricity": 2.9154960502634184,
+      "gas_facility": 51.41981372267214,
+      "heating_gas": 51.41981372267214,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.0
+    }
+  },
+  "SuperMarket": {
+    "mean": {
+      "fans_electricity": 17.071668722551042,
+      "cooling_electricity": 3.358545612397455,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 23.778373106251877,
+      "interior_equipment_electricity": 19.9221644060588,
+      "gas_facility": 69.15581651832767,
+      "heating_gas": 63.48190623496234,
+      "interior_equipment_gas": 5.048933591647035,
+      "water_heater_gas": 0.6249766916139708
+    },
+    "std": {
+      "fans_electricity": 14.034462329741462,
+      "cooling_electricity": 8.210680627274632,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 22.81060935776828,
+      "interior_equipment_electricity": 14.28363554191791,
+      "gas_facility": 104.7988528174368,
+      "heating_gas": 103.3395942671744,
+      "interior_equipment_gas": 3.6196969186225543,
+      "water_heater_gas": 0.5790247756821152
+    }
+  },
+  "Warehouse": {
+    "mean": {
+      "fans_electricity": 4.6083705972272275,
+      "cooling_electricity": 0.9966089378497717,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 14.532504015616194,
+      "interior_equipment_electricity": 2.7873471415439575,
+      "gas_facility": 26.56930123508275,
+      "heating_gas": 26.56930123508275,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.0
+    },
+    "std": {
+      "fans_electricity": 4.544177896994419,
+      "cooling_electricity": 3.4426796733839047,
+      "heating_electricity": 0.0,
+      "interior_lights_electricity": 16.660868085411114,
+      "interior_equipment_electricity": 3.1235898031452747,
+      "gas_facility": 42.749148557042204,
+      "heating_gas": 42.749148557042204,
+      "interior_equipment_gas": 0.0,
+      "water_heater_gas": 0.0
+    }
+  }
+}
