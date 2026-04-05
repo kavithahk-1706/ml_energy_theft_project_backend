@@ -73,6 +73,63 @@ class SinglePredictionRequest(BaseModel):
     data: PredictionInput
 
 
+
+# ─── Domain Rule Tiers ────────────────────────────────────────────────────────
+
+ZERO_IMPOSSIBLE = {
+    "Hospital", "OutPatient", "SuperMarket", "LargeHotel", "SmallHotel"
+}
+ZERO_SUSPICIOUS = {
+    "FullServiceRestaurant", "QuickServiceRestaurant", "LargeOffice",
+    "MediumOffice", "SmallOffice", "PrimarySchool", "SecondarySchool",
+    "StripMall", "Stand-aloneRetail"
+}
+ZERO_PLAUSIBLE = {
+    "MidriseApartment", "Warehouse"
+}
+
+NUMERIC_FEATURES = [
+    "fans_electricity", "cooling_electricity", "heating_electricity",
+    "interior_lights_electricity", "interior_equipment_electricity",
+    "gas_facility", "heating_gas", "interior_equipment_gas", "water_heater_gas"
+]
+
+def apply_domain_rules(result: dict, features: dict) -> dict:
+    building_class = features.get("class", "")
+    all_zero = all(float(features.get(f, 0)) == 0 for f in NUMERIC_FEATURES)
+
+    if not all_zero:
+        return result  # no zero-consumption case, pass through unchanged
+
+    if building_class in ZERO_IMPOSSIBLE:
+        result["domain_flag"] = "CRITICAL_ANOMALY"
+        result["domain_note"] = (
+            f"{building_class} facilities cannot have zero consumption — "
+            "complete shutdown is operationally impossible. "
+            "High confidence meter tampering."
+        )
+        result["domain_tier"] = "impossible"
+
+    elif building_class in ZERO_SUSPICIOUS:
+        result["domain_flag"] = "ZERO_CONSUMPTION_WARNING"
+        result["domain_note"] = (
+            f"Zero consumption is atypical for {building_class} — "
+            "possible extended closure, but warrants manual verification."
+        )
+        result["domain_tier"] = "suspicious"
+
+    elif building_class in ZERO_PLAUSIBLE:
+        result["domain_flag"] = "POSSIBLE_VACANCY"
+        result["domain_note"] = (
+            f"Zero consumption for {building_class} may indicate legitimate vacancy. "
+            "Model flagged theft based on statistical pattern — "
+            "recommend field verification before action."
+        )
+        result["domain_tier"] = "plausible"
+
+    return result
+
+
 # --- ENDPOINTS ---
 
 @app.get("/")
@@ -105,6 +162,7 @@ def predict_single(
             )
 
         result = predictor.predict(input_dict)
+        result = apply_domain_rules(result, input_dict) 
         exec_time = f"{round(time.time() - start_time, 3)}s"
         scan_id = f"PRD-{str(uuid.uuid4())[:8].upper()}"
         is_theft = result["prediction"] == 1
@@ -119,7 +177,10 @@ def predict_single(
                 "confidence": result["confidence"],
                 "probabilities": result["probabilities"],
                 "tree_votes": result.get("tree_votes"),
-                "anomaly_flags": result.get("anomaly_flags", [])
+                "anomaly_flags": result.get("anomaly_flags", []),
+                "domain_flag": result.get("domain_flag"),
+                "domain_note": result.get("domain_note"),
+                "domain_tier": result.get("domain_tier")
             })
 
         db_record = db_models.PredictionRecord(
@@ -142,7 +203,10 @@ def predict_single(
                 "confidence": result["confidence"],
                 "probabilities": result["probabilities"],
                 "tree_votes": result.get("tree_votes"),
-                "anomaly_flags": result.get("anomaly_flags", [])
+                "anomaly_flags": result.get("anomaly_flags", []),
+                "domain_flag": result.get("domain_flag"),
+                "domain_note": result.get("domain_note"),
+                "domain_tier": result.get("domain_tier"),
             }]
         )
         db.add(db_record)
@@ -219,6 +283,7 @@ async def predict_batch(
         theft_count = 0
 
         for i, res in enumerate(results):
+            res = apply_domain_rules(res, records[i])  
             record_data = {
                 "record_index": i,
                 "area_id": area_ids[i],
@@ -335,6 +400,9 @@ def get_scan_snapshot(
         db_models.PredictionRecord.id == scan_id
     ).first()
 
+    print("all_predictions sample:", record.all_predictions[0] if record.all_predictions else "empty")
+
+    
     if not record:
         raise HTTPException(status_code=404, detail="Scan not found")
 
