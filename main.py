@@ -71,6 +71,12 @@ class SinglePredictionRequest(BaseModel):
     tenant_slug: str = "demo-utility"
     prediction_name: str = "Manual Single Audit"
     data: PredictionInput
+    
+class ClientCreate(BaseModel):
+    name: str
+    slug: str
+    region: str = "Global"
+    status: str = "PROVISIONING"
 
 
 
@@ -422,3 +428,74 @@ def get_scan_snapshot(
             "all_predictions": record.all_predictions
         }
     }
+    
+@app.get("/clients")
+def get_all_clients(db: Session = Depends(get_db)):
+    clients = db.query(db_models.Client).order_by(db_models.Client.created_at.desc()).all()
+    return {"success": True, "clients": [
+        {
+            "id": c.id,
+            "name": c.name,
+            "slug": c.slug,
+            "region": c.region,
+            "status": c.status,
+            "created_at": c.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        } for c in clients
+    ]}
+
+@app.post("/clients")
+def create_client(payload: ClientCreate, db: Session = Depends(get_db)):
+    existing = db.query(db_models.Client).filter(db_models.Client.slug == payload.slug).first()
+    if existing:
+        raise HTTPException(status_code=400, detail=f"Slug '{payload.slug}' is already taken")
+    
+    client = db_models.Client(
+        id=f"ORG-{str(uuid.uuid4())[:8].upper()}",
+        name=payload.name,
+        slug=payload.slug,
+        region=payload.region,
+        status=payload.status
+    )
+    db.add(client)
+    db.commit()
+    return {"success": True, "client": {"id": client.id, "name": client.name, "slug": client.slug}}
+
+@app.delete("/clients/{slug}")
+def delete_client(slug: str, db: Session = Depends(get_db)):
+    client = db.query(db_models.Client).filter(db_models.Client.slug == slug).first()
+    if not client:
+        raise HTTPException(status_code=404, detail="Client not found")
+    db.delete(client)
+    db.commit()
+    return {"success": True, "message": f"Client '{slug}' removed"}
+
+@app.patch("/clients/{slug}")
+def update_client_status(slug: str, status: str, db: Session = Depends(get_db)):
+    client = db.query(db_models.Client).filter(db_models.Client.slug == slug).first()
+    if not client:
+        raise HTTPException(status_code=404, detail="Client not found")
+    client.status = status
+    db.commit()
+    return {"success": True, "message": f"Status updated to {status}"}
+
+@app.get("/logs")
+def get_all_logs(db: Session = Depends(get_db)):
+    records = db.query(db_models.PredictionRecord).order_by(
+        db_models.PredictionRecord.timestamp.desc()
+    ).all()
+
+    return {"success": True, "logs": [
+        {
+            "id": r.id,
+            "tenant_slug": r.tenant_slug,
+            "prediction_name": r.prediction_name,
+            "date": r.timestamp.strftime("%Y-%m-%d"),
+            "time": r.timestamp.strftime("%H:%M:%S"),
+            "mode": r.mode,
+            "records_analyzed": r.records_analyzed,
+            "theft_detected": r.theft_detected,
+            "execution_time": r.execution_time,
+            "status": "CRITICAL" if r.theft_detected > 0 else "SUCCESS"
+        }
+        for r in records
+    ]}

@@ -17,3 +17,14 @@ class PredictionRecord(Base):
     has_full_records = Column(Boolean)       # False if batch exceeded threshold
     theft_predictions = Column(JSON)         # rows classified as Theft
     all_predictions = Column(JSON)           # ALL rows, only saved if under threshold
+    
+    
+class Client(Base):
+    __tablename__ = "clients"
+
+    id = Column(String, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    slug = Column(String, unique=True, index=True, nullable=False)
+    region = Column(String, default="Global")
+    status = Column(String, default="PROVISIONING")  # ACTIVE, PROVISIONING, TESTING, SUSPENDED
+    created_at = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
